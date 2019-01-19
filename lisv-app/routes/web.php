@@ -13,4 +13,15 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/signup', 'RegistrationController@show');
+
+Route::post('/signup', 'RegistrationController@store');
+
+Route::get('/signin', 'SessionsController@show');
+
+Route::post('/signin', 'SessionsController@store');
+
+Route::get('/signout', 'SessionsController@destroy');
+

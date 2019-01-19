@@ -39,9 +39,9 @@
 					<span class="login100-form-title p-b-33">
 						Login
 					</span>
-					Phone number:
-					<div class="wrap-input100 validate-input" data-validate = "Valid phone is required: 0555555555">
-						<input class="input100" type="text"  placeholder="Phone" name="phonenumber">
+					Email:
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required">
+						<input class="input100" type="text"  placeholder="Email" name="email">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -59,7 +59,6 @@
 					</div>
 					<br>
 
-					@include('partials.errors')
 
 
 					<div class="text-center">
