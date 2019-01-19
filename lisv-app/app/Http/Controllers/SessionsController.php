@@ -29,12 +29,12 @@ class SessionsController extends Controller
        } 
 
        
-       return redirect()->home();
+       return redirect('http://127.0.0.1:8000/');
     }
 
     public function destroy(){
         auth()->logout();
 
-        return redirect()->home();
+        return redirect('http://127.0.0.1:8000/');
     }
 }

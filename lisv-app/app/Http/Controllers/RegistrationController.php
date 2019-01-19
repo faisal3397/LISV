@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class RegistrationController extends Controller
 {
@@ -50,6 +51,6 @@ class RegistrationController extends Controller
 
         // Redirect to homepage
 
-        return redirect()->home();
+        return redirect('http://127.0.0.1:8000/');
     }
 }
