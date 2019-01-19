@@ -1,0 +1,48 @@
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #fff;
+  width: 620px;
+  height: 220px;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+.modal.visible {
+  display: block;
+}
+/* .blur *:not(modal) {
+  filter: blur(1px);
+  display: block;
+} */
+.overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+  .select1 {
+    -webkit-appearance: menulist-button;
+    height: 40px;
+    padding:0 20px 0 20px ;
+    border: 1px solid #e6e6e6; 
+    color: black !important;
+    
+  }
+  .button1 {
+    height: 40px; 
+    width: 40px; 
+    display: inline-block; 
+    background-color: gainsboro;
+    color: black;
+  }
