@@ -81,8 +81,8 @@
                 </div>
             @else
                 <div class="links">
-                    <a href="#">Sign up</a>
-                    <a href="#">Login</a>
+                    <a href="http://127.0.0.1:8000/signup">Sign up</a>
+                    <a href="http://127.0.0.1:8000/signin">Login</a>
                 </div>
             </div>
             @endif
