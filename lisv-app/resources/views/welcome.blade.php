@@ -64,31 +64,28 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+    
+        <div class="flex-center position-ref full-height">
+
 
             <div class="content">
                 <div class="title m-b-md">
                     LISV
                 </div>
+            @if(Auth::check())
+                <div class="links">            
+                    <a  href="#"> Hello {{ Auth::user()->email }}</a>
 
+                    <a  href="http://127.0.0.1:8000/signout"> Logout</a>
+                </div>
+            @else
                 <div class="links">
                     <a href="http://127.0.0.1:8000/signup">signup</a>
                     <a href="http://127.0.0.1:8000/signin">login</a>
                 </div>
             </div>
+            @endif
         </div>
     </body>
 </html>

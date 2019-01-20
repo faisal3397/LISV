@@ -75,7 +75,7 @@
 					<br>
 
 					
-
+					@include('partials.errors')
 				
 					
 

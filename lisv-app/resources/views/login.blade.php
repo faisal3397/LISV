@@ -59,7 +59,7 @@
 					</div>
 					<br>
 
-
+					@include('partials.errors')
 
 					<div class="text-center">
 						<span class="txt1">
