@@ -28,7 +28,7 @@ class RegistrationController extends Controller
             'password' => 'required|confirmed',
 
         ]
-    );
+        );
 
         // Encrypt the password
         $pass = request('password'); // get the password
