@@ -19,9 +19,20 @@ Route::get('/signup', 'RegistrationController@show');
 
 Route::post('/signup', 'RegistrationController@store');
 
+
 Route::get('/signin', 'SessionsController@show');
 
 Route::post('/signin', 'SessionsController@store');
 
+
 Route::get('/signout', 'SessionsController@destroy');
 
+
+Route::get('/tasks', 'TasksController@show');
+
+Route::post('/tasks', 'TasksController@store');
+
+    Route::get('/t',function(){
+        $date = new DateTime("now", new DateTimeZone('Asia/Riyadh') );
+        echo $date->format('Y-m-d H:i:s');
+});
