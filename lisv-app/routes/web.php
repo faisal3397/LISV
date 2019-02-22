@@ -32,6 +32,10 @@ Route::get('/tasks', 'TasksController@show');
 
 Route::post('/tasks', 'TasksController@store');
 
+Route::get('/shops', 'ShopsController@show');
+
+Route::post('/shops', 'ShopsController@store');
+
     Route::get('/t',function(){
         $date = new DateTime("now", new DateTimeZone('Asia/Riyadh') );
         echo $date->format('Y-m-d H:i:s');
