@@ -90,7 +90,7 @@
 					
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid Time is required">
-						<input class="input100" type="time" name="time" placeholder="Email" id="time">
+						<input class="input100" type="time" name="time" placeholder="Time" id="time">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>

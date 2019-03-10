@@ -36,7 +36,15 @@ Route::get('/shops', 'ShopsController@show');
 
 Route::post('/shops', 'ShopsController@store');
 
-    Route::get('/t',function(){
-        $date = new DateTime("now", new DateTimeZone('Asia/Riyadh') );
-        echo $date->format('Y-m-d H:i:s');
+Route::get('/cards', 'CardsController@show');
+
+Route::post('/cards', 'CardsController@store');
+
+Route::delete('/cards/{id}', 'CardsController@destroy')->name('cards.destroy');
+
+Route::get('/deletecards','CardsController@showAddedCards');
+
+Route::get('/t',function(){
+    $date = new DateTime("now", new DateTimeZone('Asia/Riyadh') );
+    echo $date->format('Y-m-d H:i:s');
 });
