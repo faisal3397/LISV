@@ -59,54 +59,91 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+                    <span class="login100-form-title p-b-33">
+                            Credit Cards
+                        </span>
+    
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
+                        @endif
+    
+    
+                        @if(count($cards) > 0)
+                            <table id="donter">
+                                <tr>
+                                <th>Credit Card Number</th>
+                                <th>Cardd Holder's Name</th>
+                                <th>Expiry Date</th>
+                                </tr>
+                            </table>
+    
+                            @foreach($cards as $card)
+    
+                                <tr>
+                                    <td>{{$card->creditcardnumber}}</td>
+                                    <td>{{$card->cardholdername}}</td>
+                                    <td>{{$card->expirydate}}</td>
+                                    <td>
+                                        <form method="POST" action="{{ route('cards.destroy', [$card->id]) }}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                            <form method="POST" action="{{ route('cards.update', [$card->id]) }}">
+                                                {{ csrf_field() }}
+                                                {{ method_field('PUT') }}
+
+                                                Credit Card Number:
+                                                <div class="wrap-input100 validate-input" data-validate = "Valid Credit Card Number is required">
+                                                
+                                                    <input class="input100" type="text"  placeholder="Credit Card Number:" name="creditcardnumber">
+                                                    <span class="focus-input100-1"></span>
+                                                    <span class="focus-input100-2"></span>
+                                                </div>
+                            
+                                                Card Holder's Name:
+                                                <div class="wrap-input100 validate-input" data-validate = "Name is required">
+                                                
+                                                    <input class="input100" type="text"  placeholder="Name" name="cardholdername">
+                                                    <span class="focus-input100-1"></span>
+                                                    <span class="focus-input100-2"></span>
+                                                </div>
+                            
+                                                CVV:
+                                                <div class="wrap-input100 rs1 validate-input" data-validate="cvv is required">
+                                                    <input class="input100" type="password" name="cvv" placeholder="Card's cvv">
+                                                    <span class="focus-input100-1"></span>
+                                                    <span class="focus-input100-2"></span>
+                                                </div>
+                            
+                                                <br>
+                                                Card's Expiry Date:
+                                                <div class="wrap-input100 validate-input" data-validate = "Valid date is required">
+                                                    <input class="input100" type="date" name="expirydate" placeholder="Card's Expiry Date" id="expirydate">
+                                                    <span class="focus-input100-1"></span>
+                                                    <span class="focus-input100-2"></span>
+                                                </div>
+                                                <br>
+                                                
+                                                <button type="submit">Edit</button>
+                                            </form>
+                                        </td>
+                                </tr>
+                            @endforeach
+                        
+                        @else 
+                            <span class="login100-form-title p-b-33">
+                                    No Credit Cards Available
+                            </span>
+                        @endif
 				<form class="login100-form validate-form" method="POST" action="/cards">
 
 					{{ csrf_field() }}
-                    <span class="login100-form-title p-b-33">
-						Credit Cards
-                    </span>
-
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{session('success')}}
-                        </div>
-                    @endif
-
-
-                    @if(count($cards) > 0)
-                        <table id="donter">
-                            <tr>
-                            <th>Credit Card Number</th>
-                            <th>Cardd Holder's Name</th>
-                            <th>Expiry Date</th>
-                            </tr>
-                        </table>
-
-                        @foreach($cards as $card)
-
-                            <tr>
-                                <td>{{$card->creditcardnumber}}</td>
-                                <td>{{$card->cardholdername}}</td>
-                                <td>{{$card->expirydate}}</td>
-                                <td>
-                                    <form method="POST" action="{{ route('cards.destroy', [$card->creditcardnumber]) }}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    
-                    @else 
-                        <span class="login100-form-title p-b-33">
-                                No Credit Cards Available
-                        </span>
-                    @endif
-                    
-
-
-
 
 
 					<span class="login100-form-title p-b-33">
