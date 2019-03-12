@@ -36,6 +36,66 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+					@if(count($errors)>0)
+					<div class= "alert alert-danger">
+						You did not chooes a task.
+					</div>
+				@endif
+
+
+				@if(session('success'))
+					<div class= "alert alert-success">
+						{{session('success')}}
+					</div>
+				@endif
+
+				@if(count($tasks)>0)
+				@foreach($tasks as $task)
+					<div>
+						Task: {{$task->taskname}}
+						<br>
+						Time: {{$task->time}}
+						<br>
+						<form method="POST" action="{{ route('tasks.destroy', [$task->id]) }}">
+								{{ csrf_field() }}
+								{{ method_field('DELETE') }}
+								<button type="submit">Delete</button>
+								@include('partials.errors')
+						</form>
+
+						<form method="POST" action="{{ route('tasks.update', [$task->id]) }}">
+								{{ csrf_field() }}
+								{{ method_field('PUT') }}
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+										<label class="btn btn-secondary active">
+										  <input type="radio" name="taskname" id="option1" autocomplete="off" value="Open Doors"> Open Doors
+										</label>
+										<label class="btn btn-secondary">
+											 <input type="radio" name="taskname" id="option2" autocomplete="off" value="Close Doors"> Close Doors
+										</label>
+										<label class="btn btn-secondary">
+											  <input type="radio" name="taskname" id="option3" autocomplete="off" value="Turn on"> Turn on
+										</label>
+									  <label class="btn btn-secondary">
+											  <input type="radio" name="taskname" id="option3" autocomplete="off" value="Turn off"> Turn off
+										</label>
+								  </div>
+								  <br>
+								  					
+								<div class="wrap-input100 validate-input" data-validate = "Valid Time is required">
+										<input class="input100" type="time" name="time" placeholder="Time" id="time">
+										<span class="focus-input100-1"></span>
+										<span class="focus-input100-2"></span>
+									</div>
+	
+								<button type="submit">Edit</button>
+								@include('partials.errors')
+						</form>
+					</div>
+
+					<br>
+				@endforeach
+			@endif
 				<form class="login100-form validate-form" method="POST" action="/tasks">
 
 					{{ csrf_field() }}
@@ -44,29 +104,7 @@
 						Tasks		
 					</span>
 
-					@if(count($errors)>0)
-						<div class= "alert alert-danger">
-							You did not chooes a task.
-						</div>
-					@endif
 
-
-					@if(session('success'))
-						<div class= "alert alert-success">
-							{{session('success')}}
-						</div>
-					@endif
-
-					@if(count($tasks)>0)
-						@foreach($tasks as $task)
-							<div>
-								Task: {{$task->taskname}}
-								<br>
-								Time: {{$task->time}}
-							</div>
-							<br>
-						@endforeach
-					@endif
 
 
 					Task:
@@ -90,7 +128,7 @@
 					
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid Time is required">
-						<input class="input100" type="time" name="time" placeholder="Email" id="time">
+						<input class="input100" type="time" name="time" placeholder="Time" id="time">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
