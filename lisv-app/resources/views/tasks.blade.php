@@ -48,6 +48,12 @@
 						{{session('success')}}
 					</div>
 				@endif
+				
+				@if($status != null)
+				<div class= "alert alert-success">
+					{{$status}}
+				</div>
+				@endif
 
 				@if(count($tasks)>0)
 				@foreach($tasks as $task)
@@ -82,7 +88,7 @@
 								  </div>
 								  <br>
 								  					
-								<div class="wrap-input100 validate-input" data-validate = "Valid Time is required">
+								<div class="wrap-input100 ">
 										<input class="input100" type="time" name="time" placeholder="Time" id="time">
 										<span class="focus-input100-1"></span>
 										<span class="focus-input100-2"></span>
@@ -96,6 +102,8 @@
 					<br>
 				@endforeach
 			@endif
+
+			
 				<form class="login100-form validate-form" method="POST" action="/tasks">
 
 					{{ csrf_field() }}

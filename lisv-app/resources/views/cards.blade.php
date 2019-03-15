@@ -194,15 +194,6 @@
 					
 					@include('partials.errors')
 				
-                    <div class="text-center">
-                            <span class="txt1">
-                                Want to delete a card?
-                            </span>
-                            <br>
-                            <a href="http://127.0.0.1:8000/deletecards" class="txt2 hov1">
-                                Select cards
-                            </a>
-                    </div>
 
                 </form>
                 
