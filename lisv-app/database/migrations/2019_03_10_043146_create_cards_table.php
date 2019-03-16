@@ -19,6 +19,8 @@ class CreateCardsTable extends Migration
             $table->string('cardholdername');
             $table->string('expirydate');
             $table->string('cvv');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Task;
+use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class TasksController extends Controller
@@ -11,11 +13,8 @@ class TasksController extends Controller
 
     public function show(){
         $date = Carbon::now('Asia/Riyadh');
-        $tasks = Task::all();
-        var_dump(" ".$date->format('H:i')." format");
+        $tasks = DB::table('tasks')->where('user_id', '=', auth()->id())->get();
         foreach ($tasks as $task) {
-            // var_dump($task->time." task time");
-            var_dump(" ".$date->format('H:i') > ($task->time));
             if($date->format('H:i') > ($task->time)){
                 
                 switch($task->taskname){
@@ -62,6 +61,7 @@ class TasksController extends Controller
         $task->taskname = request('taskname');
 
         $task->time = request('time');
+        $task ->user_id = auth()->id();
 
 
         $task->save();
@@ -76,6 +76,8 @@ class TasksController extends Controller
         $task->taskname = request('taskname');
 
         $task->time = request('time');
+
+        $task ->user_id = auth()->id();
 
 
         $task->save();

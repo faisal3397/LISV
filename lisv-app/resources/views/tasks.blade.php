@@ -36,11 +36,12 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				@if(Auth::check())
 					@if(count($errors)>0)
-					<div class= "alert alert-danger">
-						You did not chooes a task.
-					</div>
-				@endif
+						<div class= "alert alert-danger">
+							You did not chooes a task.
+						</div>
+					@endif
 
 
 				@if(session('success'))
@@ -148,6 +149,17 @@
 					</div>
 					<br>
 				</form>
+				@else 
+					<div class="content">
+
+                
+						<div class="links">
+								<a href="http://127.0.0.1:8000/signup">Sign up</a>
+								<a href="http://127.0.0.1:8000/signin">Login</a>
+						</div>
+				
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>
