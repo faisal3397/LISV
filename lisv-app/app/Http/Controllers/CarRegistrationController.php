@@ -5,13 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Registration;
 use Illuminate\Support\Facades\DB;
+use Notification;
+use App\Notifications\RegistrationExpiry;
+use Carbon\Carbon;
+use App\User;
 
 class CarRegistrationController extends Controller
 {
 
     public function show(){
+        $date = Carbon::now('Asia/Riyadh');
+        $registrations = DB::table('registrations')->where('user_id', '=', auth()->id())->get();
 
-        $registrations = DB::table('registrations')->where('user_id', '=', auth()->id())->get();;
+        $registration = DB::table('registrations')->where('user_id', '=', auth()->id())->first();
+        var_dump($registration);
+        if(count($registrations) > 0){
+            if($date->format('Y-m-d') > ($registration->expirydate)){
+                $users = User::where('id', auth()->id())->get();
+                Notification::send($users, new RegistrationExpiry($registration));
+            }
+        }
         return view('carRegistration') ->with("registrations",$registrations);
     }
 

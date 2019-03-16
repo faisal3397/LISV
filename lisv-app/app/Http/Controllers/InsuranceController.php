@@ -5,14 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Insurance;
 use Illuminate\Support\Facades\DB;
+use Notification;
+use App\Notifications\InsuranceOffer;
+use Carbon\Carbon;
+use App\User;
 
 class InsuranceController extends Controller
 {
     //
     public function show(){
+        $date = Carbon::now('Asia/Riyadh');
+        $insurances = DB::table('insurances')->where('user_id', '=', auth()->id())->get();
 
-        $insurances = DB::table('insurances')->where('user_id', '=', auth()->id())->get();;
-        return view('insurance')->with("insurances",$insurances);;
+        $insurance = DB::table('insurances')->where('user_id', '=', auth()->id())->first();
+        var_dump($insurance);
+        if(count($insurances) > 0){
+            if($date->format('Y-m-d') > ($insurance->expirydate)){
+            $users = User::where('id', auth()->id())->get();
+            Notification::send($users, new InsuranceOffer($insurance));
+            } 
+        }
+
+        return view('insurance')->with("insurances",$insurances);
+    }
+
+    public function showOffer(){
+
+        $insurances = DB::table('insurances')->where('user_id', '=', auth()->id())->get();
+        $insuranceOffer = DB::table('companies')->orderBy('price')->first();
+        return view('insuranceUpdate')->with("insuranceOffer",$insuranceOffer)->with("insurances",$insurances);
     }
 
     public function store(){

@@ -50,11 +50,15 @@ Route::get('/insurance', 'InsuranceController@show');
 Route::post('/insurance', 'InsuranceController@store');
 Route::delete('/insurance/{id}', 'InsuranceController@destroy')->name('insurance.destroy');
 Route::put('/insurance/{id}', 'InsuranceController@update')->name('insurance.update');
+Route::get('/insuranceOffer', 'InsuranceController@showOffer');
 
 Route::get('/carRegistration', 'CarRegistrationController@show');
 Route::post('/carRegistration', 'CarRegistrationController@store');
 Route::delete('/carRegistration/{id}', 'CarRegistrationController@destroy')->name('registration.destroy');
 Route::put('/carRegistration/{id}', 'CarRegistrationController@update')->name('registration.update');
+
+Route::get('/company', 'CompanyController@show');
+Route::post('/company', 'CompanyController@store');
 
 
 Route::get('/t',function(){

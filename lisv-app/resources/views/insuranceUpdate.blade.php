@@ -35,19 +35,97 @@
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
              @if(Auth::check())
 
+            
+                
+             
+                    <div>
+                        Insurance Company: {{$insuranceOffer->companyname}}
+                        <br>
+                        Insrance Expiry Date: {{$insuranceOffer->expirydate}}
+                        <br>
+                        Price: {{$insuranceOffer->price}}SAR
+                        <br>
+                    </div>
+                
+
              @if(session('success'))
 					<div class= "alert alert-success">
 						{{session('success')}}
 					</div>
             @endif
             
+            @if(count($insurances)>0)
+            @foreach($insurances as $insurance)
+                <form method="POST" action="{{ route('insurance.update', [$insurance->id]) }}">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
+                    <span class="login100-form-title p-b-33">
+                            Update Insurance
+                    </span>
+                        Company Name:
+                        <div class="wrap-input100 validate-input" data-validate = "Valid Name is required">
+                        
+                            <input class="input100" type="text"  placeholder="Insurance Company Name" name="companyname">
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <br>
+                        Insurance Expiry Date:
+                        <div class="wrap-input100 validate-input" data-validate = "Valid date is required">
+                            <input class="input100" type="date" name="expirydate" placeholder="Insurance Expiry Date" id="expirydate">
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <br>
+                        Car:
+                        <div class="wrap-input100 validate-input" data-validate = "Car is required: e.g.Jeep Wrangler">
+                        
+                            <input class="input100" type="text"  placeholder="Car" name="car">
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <br>
+                        Year:
+                        <div class="wrap-input100 validate-input" data-validate = "Year is required: e.g.2014">
+                        
+                            <input class="input100" type="text"  placeholder="Year" name="year">
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <br>
+                        Policy Number:
+                        <div class="wrap-input100 validate-input" data-validate = "Policy Number is required">
+                        
+                            <input class="input100" type="text"  placeholder="Policy Number Number" name="policynumber">
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <br>
+                        Plate Number:
+                        <div class="wrap-input100 validate-input" data-validate = "Plate Number is required: XYZ 123">
+                        
+                            <input class="input100" type="text"  placeholder="Plate Number" name="platenumber">
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <br>
+                        
+    
+
+                    <button type="submit">Edit</button>
+                    @include('partials.errors')
+            </form>
+                <br>
+            @endforeach
+
+            @else 
 
 				<form class="login100-form validate-form" method="POST" action="/insurance">
 
 					{{ csrf_field() }}
 
 					<span class="login100-form-title p-b-33">
-						Insurance Information
+						Update Insurance
 					</span>
 					Company Name:
 					<div class="wrap-input100 validate-input" data-validate = "Valid Name is required">
@@ -108,6 +186,11 @@
 					
 					@include('partials.errors')
                 </form>
+        @endif
+
+
+				
+					@include('partials.errors')
                 @else 
                 <div class="content">
 
