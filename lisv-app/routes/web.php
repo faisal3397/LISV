@@ -46,6 +46,16 @@ Route::put('/cards/{id}', 'CardsController@update')->name('cards.update');
 Route::delete('/tasks/{id}', 'TasksController@destroy')->name('tasks.destroy');
 Route::put('/tasks/{id}', 'TasksController@update')->name('tasks.update');
 
+Route::get('/insurance', 'InsuranceController@show');
+Route::post('/insurance', 'InsuranceController@store');
+Route::delete('/insurance/{id}', 'InsuranceController@destroy')->name('insurance.destroy');
+Route::put('/insurance/{id}', 'InsuranceController@update')->name('insurance.update');
+
+Route::get('/carRegistration', 'CarRegistrationController@show');
+Route::post('/carRegistration', 'CarRegistrationController@store');
+Route::delete('/carRegistration/{id}', 'CarRegistrationController@destroy')->name('registration.destroy');
+Route::put('/carRegistration/{id}', 'CarRegistrationController@update')->name('registration.update');
+
 
 Route::get('/t',function(){
     $date = new DateTime("now", new DateTimeZone('Asia/Riyadh') );

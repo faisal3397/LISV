@@ -29,21 +29,6 @@ class RegistrationController extends Controller
 
             'password' => 'required|confirmed',
 
-            'vin' => 'required',
-
-            'expirydate' => 'required|date',
-
-            'company' => 'required',
-
-            'model' => 'required',
-
-            'year' => 'required',
-
-            'color' => 'required',
-
-            'registrationtype' => 'required',
-
-            'platenumber' => 'required'
 
         ]
         );
@@ -63,22 +48,6 @@ class RegistrationController extends Controller
 
         $user->password = $password;
 
-        $user->vin = request('vin');
-
-        $user->expirydate = request('expirydate');
-
-        $user->company = request('company');
-
-        $user->model = request('model');
-
-        $user->year = request('year');
-
-        $user->color = request('color');
-
-        $user->registrationtype = request('registrationtype');
-
-        $user->platenumber = request('platenumber');
-
         $user->save();
 
         // Sign them in
@@ -89,4 +58,6 @@ class RegistrationController extends Controller
 
         return redirect('http://127.0.0.1:8000/');
     }
+
+    
 }

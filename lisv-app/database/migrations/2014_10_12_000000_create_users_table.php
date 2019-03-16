@@ -19,14 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('phonenumber'); 
-            $table->string('vin');
-            $table->string('expirydate');
-            $table->string('company');
-            $table->string('model');
-            $table->string('year');
-            $table->string('color');
-            $table->string('registrationtype');
-            $table->string('platenumber');
             $table->rememberToken();
             $table->timestamps();
         });

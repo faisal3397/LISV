@@ -37,4 +37,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Card');
     }
+
+    public function registration()
+    {
+        return $this->hasOne('App\Registration');
+    }
+
+    public function insurance()
+    {
+        return $this->hasOne('App\Insurance');
+    }
 }
