@@ -18,7 +18,7 @@ class InsuranceController extends Controller
         $insurances = DB::table('insurances')->where('user_id', '=', auth()->id())->get();
 
         $insurance = DB::table('insurances')->where('user_id', '=', auth()->id())->first();
-        var_dump($insurance);
+        // var_dump($insurance);
         if(count($insurances) > 0){
             if($date->format('Y-m-d') > ($insurance->expirydate)){
             $users = User::where('id', auth()->id())->get();

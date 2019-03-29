@@ -60,6 +60,8 @@ Route::put('/carRegistration/{id}', 'CarRegistrationController@update')->name('r
 Route::get('/company', 'CompanyController@show');
 Route::post('/company', 'CompanyController@store');
 
+Route::get('/weather', 'WeatherController@show');
+
 
 Route::get('/t',function(){
     $date = new DateTime("now", new DateTimeZone('Asia/Riyadh') );
