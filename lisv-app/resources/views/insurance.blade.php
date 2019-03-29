@@ -33,69 +33,92 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form" method="POST" action="/signup">
+             @if(Auth::check())
+
+             @if(session('success'))
+					<div class= "alert alert-success">
+						{{session('success')}}
+					</div>
+            @endif
+            
+
+				<form class="login100-form validate-form" method="POST" action="/insurance">
 
 					{{ csrf_field() }}
 
 					<span class="login100-form-title p-b-33">
-						Sign up
+						Insurance Information
 					</span>
-
-					Name:
-					<div class="wrap-input100 validate-input" data-validate = "Name is required">
+					Company Name:
+					<div class="wrap-input100 validate-input" data-validate = "Valid Name is required">
 					
-						<input class="input100" type="text"  placeholder="Name" name="name">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Phone number:
-					<div class="wrap-input100 validate-input" data-validate = "Valid phone is required: 0555555555">
-					
-						<input class="input100" type="text"  placeholder="Phone" name="phonenumber">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Email:
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required">
-						<input class="input100" type="text" name="email" placeholder="Email" id="email">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Password:
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Re-enter your password:
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password_confirmation" placeholder="Password Confirmation">
+						<input class="input100" type="text"  placeholder="Insurance Company Name" name="companyname">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 					<br>
+					Insurance Expiry Date:
+					<div class="wrap-input100 validate-input" data-validate = "Valid date is required">
+						<input class="input100" type="date" name="expirydate" placeholder="Insurance Expiry Date" id="expirydate">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<br>
+					Car:
+					<div class="wrap-input100 validate-input" data-validate = "Car is required: e.g.Jeep Wrangler">
+					
+						<input class="input100" type="text"  placeholder="Car" name="car">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<br>
+					Year:
+					<div class="wrap-input100 validate-input" data-validate = "Year is required: e.g.2014">
+					
+						<input class="input100" type="text"  placeholder="Year" name="year">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<br>
+					Policy Number:
+					<div class="wrap-input100 validate-input" data-validate = "Policy Number is required">
+					
+						<input class="input100" type="text"  placeholder="Policy Number Number" name="policynumber">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<br>
+					Plate Number:
+					<div class="wrap-input100 validate-input" data-validate = "Plate Number is required: XYZ 123">
+					
+						<input class="input100" type="text"  placeholder="Plate Number" name="platenumber">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<br>
+					
+
 					<div class="container-login100-form-btn m-t-20">
 						<button class="login100-form-btn">
-							Sign up
+							Submit Insurance
 						</button>
 					</div>
 					<br>
 
 					
 					@include('partials.errors')
-				
-					
+                </form>
+                @else 
+                <div class="content">
 
-					<div class="text-center">
-						<span class="txt1">
-							have an account?
-						</span>
-						<br>
-						<a href="http://127.0.0.1:8000/signin" class="txt2 hov1">
-							login
-						</a>
-					</div>
-				</form>
+            
+                    <div class="links">
+                            <a href="http://127.0.0.1:8000/signup">Sign up</a>
+                            <a href="http://127.0.0.1:8000/signin">Login</a>
+                    </div>
+            
+                </div>
+            @endif    
 			</div>
 		</div>
 	</div>

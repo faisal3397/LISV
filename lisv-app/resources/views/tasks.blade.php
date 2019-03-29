@@ -36,17 +36,24 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				@if(Auth::check())
 					@if(count($errors)>0)
-					<div class= "alert alert-danger">
-						You did not chooes a task.
-					</div>
-				@endif
+						<div class= "alert alert-danger">
+							You did not chooes a task.
+						</div>
+					@endif
 
 
 				@if(session('success'))
 					<div class= "alert alert-success">
 						{{session('success')}}
 					</div>
+				@endif
+				
+				@if($status != null)
+				<div class= "alert alert-success">
+					{{$status}}
+				</div>
 				@endif
 
 				@if(count($tasks)>0)
@@ -82,7 +89,7 @@
 								  </div>
 								  <br>
 								  					
-								<div class="wrap-input100 validate-input" data-validate = "Valid Time is required">
+								<div class="wrap-input100 ">
 										<input class="input100" type="time" name="time" placeholder="Time" id="time">
 										<span class="focus-input100-1"></span>
 										<span class="focus-input100-2"></span>
@@ -96,6 +103,8 @@
 					<br>
 				@endforeach
 			@endif
+
+			
 				<form class="login100-form validate-form" method="POST" action="/tasks">
 
 					{{ csrf_field() }}
@@ -140,6 +149,17 @@
 					</div>
 					<br>
 				</form>
+				@else 
+					<div class="content">
+
+                
+						<div class="links">
+								<a href="http://127.0.0.1:8000/signup">Sign up</a>
+								<a href="http://127.0.0.1:8000/signin">Login</a>
+						</div>
+				
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>

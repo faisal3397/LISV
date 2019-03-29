@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Card;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CardsController extends Controller
 {
@@ -11,7 +12,7 @@ class CardsController extends Controller
 
     public function show(){
 
-        $cards = Card::all();
+        $cards = DB::table('cards')->where('user_id', '=', auth()->id())->get();;
         return view('cards')->with("cards",$cards);
     }
 
@@ -24,7 +25,7 @@ class CardsController extends Controller
             'creditcardnumber' => 'required|unique:cards',
             'cardholdername'   => 'required',
             'expirydate'       => 'required',
-            'cvv'              => 'required' 
+            'cvv'              => 'required',
             ]
         );
 
@@ -39,6 +40,7 @@ class CardsController extends Controller
         $card ->cardholdername   = request('cardholdername');
         $card ->expirydate       = request('expirydate');
         $card ->cvv              = $encryptedcvv;
+        $card ->user_id          = auth()->id();
 
         $card->save();
 
@@ -56,6 +58,7 @@ class CardsController extends Controller
         $card ->cardholdername   = request('cardholdername');
         $card ->expirydate       = request('expirydate');
         $card ->cvv              = $encryptedcvv;
+        $card ->user_id          = auth()->id();
 
         $card->save();
 

@@ -2,17 +2,48 @@
 
 namespace App\Http\Controllers;
 use App\Task;
+use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TasksController extends Controller
 {
-    //
+
     public function show(){
+        $date = Carbon::now('Asia/Riyadh');
+        $tasks = DB::table('tasks')->where('user_id', '=', auth()->id())->get();
+        foreach ($tasks as $task) {
+            if($date->format('H:i') > ($task->time)){
+                
+                switch($task->taskname){
+                    case 'Open Doors':
+                    $this->destroy($task->id);
+                    return view('tasks')->with("tasks", $tasks)->with("status","Doors are Open");
+                    break;
 
-        $tasks = Task::all();
+                    case 'Close Doors':
+                    $this->destroy($task->id);
+                    return view('tasks')->with("tasks", $tasks)->with("status","Doors are Closed");
+                    break;
 
-        return view('tasks')->with("tasks", $tasks);
+                    case 'Turn on':
+                    $this->destroy($task->id);
+                    return view('tasks')->with("tasks", $tasks)->with("status","Car is On");
+                    break;
+
+                    case 'Turn off':
+                    $this->destroy($task->id);
+                    return view('tasks')->with("tasks", $tasks)->with("status","Car is Off");
+                    break;
+                }
+                
+            }
+
+                     
+        }
+        return view('tasks')->with("tasks", $tasks)->with("status");
     } 
 
 
@@ -30,6 +61,7 @@ class TasksController extends Controller
         $task->taskname = request('taskname');
 
         $task->time = request('time');
+        $task ->user_id = auth()->id();
 
 
         $task->save();
@@ -44,6 +76,8 @@ class TasksController extends Controller
         $task->taskname = request('taskname');
 
         $task->time = request('time');
+
+        $task ->user_id = auth()->id();
 
 
         $task->save();
