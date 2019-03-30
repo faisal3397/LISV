@@ -19,12 +19,12 @@ class InsuranceController extends Controller
 
         $insurance = DB::table('insurances')->where('user_id', '=', auth()->id())->first();
         // var_dump($insurance);
-        if(count($insurances) > 0){
-            if($date->format('Y-m-d') > ($insurance->expirydate)){
-            $users = User::where('id', auth()->id())->get();
-            Notification::send($users, new InsuranceOffer($insurance));
-            } 
-        }
+        // if(count($insurances) > 0){
+        //     if($date->format('Y-m-d') > ($insurance->expirydate)){
+        //     $users = User::where('id', auth()->id())->get();
+        //     Notification::send($users, new InsuranceOffer($insurance));
+        //     } 
+        // }
 
         return view('insurance')->with("insurances",$insurances);
     }
@@ -33,7 +33,7 @@ class InsuranceController extends Controller
 
         $insurances = DB::table('insurances')->where('user_id', '=', auth()->id())->get();
         $insuranceOffer = DB::table('companies')->orderBy('price')->first();
-        return view('insuranceUpdate')->with("insuranceOffer",$insuranceOffer)->with("insurances",$insurances);
+        return view('insuranceOffer')->with("insuranceOffer",$insuranceOffer)->with("insurances",$insurances);
     }
 
     public function store(){

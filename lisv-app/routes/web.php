@@ -37,6 +37,9 @@ Route::get('/shops', 'ShopsController@show');
 Route::post('/shops', 'ShopsController@store');
 
 Route::get('/cards', 'CardsController@show');
+Route::get('/addCard', function(){
+    return view('addCard');
+});
 
 Route::post('/cards', 'CardsController@store');
 
@@ -47,6 +50,9 @@ Route::delete('/tasks/{id}', 'TasksController@destroy')->name('tasks.destroy');
 Route::put('/tasks/{id}', 'TasksController@update')->name('tasks.update');
 
 Route::get('/insurance', 'InsuranceController@show');
+Route::get('/addInsurance', function(){
+    return view('addInsurance');
+});
 Route::post('/insurance', 'InsuranceController@store');
 Route::delete('/insurance/{id}', 'InsuranceController@destroy')->name('insurance.destroy');
 Route::put('/insurance/{id}', 'InsuranceController@update')->name('insurance.update');

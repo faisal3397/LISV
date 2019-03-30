@@ -75,7 +75,7 @@
                 </div>
             @if(Auth::check())
                 <div class="links">            
-                    <a  href="#"> Hello {{ Auth::user()->email }}</a>
+                    <a  href="#"> Hello {{ Auth::user()->name }}</a>
                     <a  href="http://127.0.0.1:8000/tasks">Tasks</a>
                     <a  href="http://127.0.0.1:8000/shops">Shops</a>
                     <a  href="http://127.0.0.1:8000/cards">Cards</a>

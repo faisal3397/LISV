@@ -1,125 +1,63 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
-	<title>Sign up</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style0.css">
+    <title>Sign up</title>
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form" method="POST" action="/signup">
 
-					{{ csrf_field() }}
+    @include('partials.nav')
 
-					<span class="login100-form-title p-b-33">
-						Sign up
-					</span>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Sign up</h5>
+						<form class="form-signin" method="POST" action="/signup"
+						>
+							{{ csrf_field() }}
 
-					Name:
-					<div class="wrap-input100 validate-input" data-validate = "Name is required">
-					
-						<input class="input100" type="text"  placeholder="Name" name="name">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Phone number:
-					<div class="wrap-input100 validate-input" data-validate = "Valid phone is required: 0555555555">
-					
-						<input class="input100" type="text"  placeholder="Phone" name="phonenumber">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Email:
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required">
-						<input class="input100" type="text" name="email" placeholder="Email" id="email">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Password:
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					Re-enter your password:
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password_confirmation" placeholder="Password Confirmation">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-					<br>
-					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn">
-							Sign up
-						</button>
-					</div>
-					<br>
+							<div class="form-label-group">
+                                <input type="text" id="name" class="form-control" placeholder="Name" name="name" required >
+                                <label for="name">Name</label>
+							</div>
+							
+                            <div class="form-label-group">
+                                <input type="email" id="email" class="form-control" placeholder="Email" name="email" required >
+                                <label for="email">Email</label>
+                            </div>
 
+							<div class="form-label-group">
+                                <input type="text" id="phonenumber" class="form-control" placeholder="Phonenumber" name="phonenumber" required >
+                                <label for="phonenumber">Phonenumber</label>
+							</div>
+							
+                            <div class="form-label-group">
+                                <input type="password" id="password" class="form-control" placeholder="Password" name="password" required >
+                                <label for="password">Password</label>
+							</div>
+							
+							<div class="form-label-group">
+                                <input type="password" class="form-control" placeholder="Password Confirmation" name="password_confirmation" required >
+                                <label for="password_confirmation">Password Confirmation</label>
+                            </div>  
+                             
+                            <button class="btn btn-lg btn-secondary btn-block text-uppercase" type="submit">Sign up</button>
+
+                            <br>
+                            <a  class="text-uppercase" href="http://127.0.0.1:8000/signin" style="margin-left: 42%;">Sign in</a>
+                        </form>
+					</div>
 					
 					@include('partials.errors')
-				
-					
-
-					<div class="text-center">
-						<span class="txt1">
-							have an account?
-						</span>
-						<br>
-						<a href="http://127.0.0.1:8000/signin" class="txt2 hov1">
-							login
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-
-	
-
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-
-	<script src="vendor/bootstrap/js/popper.js"></script>
-
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-	<script src="vendor/select2/select2.min.js"></script>
-
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-
-	<script src="js/main.js"></script>
-
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-</html> 
+</html>
