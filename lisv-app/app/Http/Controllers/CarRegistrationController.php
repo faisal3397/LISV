@@ -18,7 +18,11 @@ class CarRegistrationController extends Controller
         $registrations = DB::table('registrations')->where('user_id', '=', auth()->id())->get();
 
         $registration = DB::table('registrations')->where('user_id', '=', auth()->id())->first();
+<<<<<<< HEAD
         var_dump($registration);
+=======
+        // var_dump($registration);
+>>>>>>> 7daaeb4f4f6fa59949bf6f33c8bebf2213cd5711
         // if(count($registrations) > 0){
         //     if($date->format('Y-m-d') > ($registration->expirydate)){
         //         $users = User::where('id', auth()->id())->get();
@@ -81,7 +85,7 @@ class CarRegistrationController extends Controller
 
         // Redirect to homepage
 
-        return redirect('http://127.0.0.1:8000/carRegistration');
+        return redirect('http://127.0.0.1:8000/');
     }
 
 

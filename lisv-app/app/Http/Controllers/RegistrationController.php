@@ -54,9 +54,9 @@ class RegistrationController extends Controller
 
         auth()->login($user);
 
-        // Redirect to homepage
+        // Redirect to Car Registration
 
-        return redirect('http://127.0.0.1:8000/');
+        return redirect('http://127.0.0.1:8000/carRegistration');
     }
 
     

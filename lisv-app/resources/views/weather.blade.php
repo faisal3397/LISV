@@ -73,23 +73,12 @@
                 <div class="title m-b-md">
                     LISV
                 </div>
-            @if(Auth::check())
-                <div class="links">            
-                    <a  href="#"> Hello {{ Auth::user()->name }}</a>
-                    <a  href="http://127.0.0.1:8000/tasks">Tasks</a>
-                    <a  href="http://127.0.0.1:8000/shops">Shops</a>
-                    <a  href="http://127.0.0.1:8000/cards">Cards</a>
-                    <a  href="http://127.0.0.1:8000/carRegistration">Car Registration</a>
-                    <a  href="http://127.0.0.1:8000/insurance">Car Insurance</a>
-                    <a  href="http://127.0.0.1:8000/signout">Logout</a>
+
+                
+                <div>
+                    {{$array[0]->temp}}
+                   
                 </div>
-            @else
-                <div class="links">
-                    <a href="http://127.0.0.1:8000/signup">Sign up</a>
-                    <a href="http://127.0.0.1:8000/signin">Login</a>
-                </div>
-            </div>
-            @endif
         </div>
     </body>
 </html>
