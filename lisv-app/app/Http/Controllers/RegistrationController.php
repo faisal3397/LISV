@@ -56,7 +56,7 @@ class RegistrationController extends Controller
 
         // Redirect to Car Registration
 
-        return redirect('http://127.0.0.1:8000/carRegistration');
+        return redirect('http://127.0.0.1:8000/addRegistration');
     }
 
     

@@ -25,13 +25,16 @@
                             <div class="row">
                                 @if(count($insurances) > 0)
                                     @foreach($insurances as $insurance)
-                                        <div class="col-sm-12 col-lg-4">
+                                        <div class="col-sm-12 col-lg-4 mx-auto">
                                             <div class="card12">
-                                                {{-- <img src="https://i.imgur.com/HimtftSr.png" alt="Avatar" style="width:100%"> --}}
                                                 <div class="container12">
                                                     <br>
-                                                    <h4 class="card-title"><b>{{$insurance->companyname}}</b></h4> 
-                                                    <p>{{$insurance->expirydate}}</p> 
+                                                    <h4 class="card-title"><b>Company Name: {{$insurance->companyname}}</b></h4> 
+                                                    <p>Insurance Expiry Date: {{$insurance->expirydate}}</p> 
+                                                    <p>Car: {{$insurance->car}}</p> 
+                                                    <p>Year: {{$insurance->year}}</p> 
+                                                    <p>Plate Number: {{$insurance->platenumber}}</p>
+                                                    <p>Policy Number: {{$insurance->policynumber}}</p>  
                                                     <form method="POST" action="{{ route('insurance.destroy', [$insurance->id]) }}">
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
@@ -45,23 +48,23 @@
                                         </div>
                                     @endforeach
                                 @else 
-                                    <h4 class="card-title"><b>No Insurance Available</b></h4>
-                                @endif
-
-                                <div class="col-sm-12 col-lg-4">
-                                    <div class="card12">
-                                        <img src="https://i.imgur.com/TAD3ciz.png" alt="Avatar" style="width:100%">
-                                        <div class="container12">
-                                            <br>
-                                            <h4 class="card-title"><b>Add New Insurance</b></h4> 
-                                            <br>
-                                            <form method="GET" action="/addInsurance">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase" style="border-radius: 25px;">Add New Insurance</button>
-                                            </form>
-                                            <br>                                    
+                                    <div class="col-sm-12 col-lg-4 mx-auto">
+                                        <div class="card12">
+                                            <img src="https://i.imgur.com/TAD3ciz.png" alt="Avatar" style="width:100%">
+                                            <div class="container12">
+                                                <br>
+                                                <h4 class="card-title"><b>Add New Insurance</b></h4> 
+                                                <br>
+                                                <form method="GET" action="/addInsurance">
+                                                    <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase" style="border-radius: 25px;">Add New Insurance</button>
+                                                </form>
+                                                <br>                                    
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
+
+
 
                             </div>
                         @else 

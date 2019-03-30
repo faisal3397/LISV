@@ -31,6 +31,9 @@ Route::get('/signout', 'SessionsController@destroy');
 Route::get('/tasks', 'TasksController@show');
 
 Route::post('/tasks', 'TasksController@store');
+Route::get('/addTask', function(){
+    return view('addTask');
+});
 
 Route::get('/shops', 'ShopsController@show');
 
@@ -66,8 +69,21 @@ Route::put('/carRegistration/{id}', 'CarRegistrationController@update')->name('r
 Route::get('/company', 'CompanyController@show');
 Route::post('/company', 'CompanyController@store');
 
-Route::get('/weather', 'WeatherController@show');
+Route::get('/weather', function(){
+    return view('weather');
+});
 
+Route::get('/awareofShops', function(){
+    return view('awareofShops');
+});
+
+Route::get('/outofRadius', function(){
+    return view('outofRadius');
+});
+
+Route::get('/addRegistration', function(){
+    return view('addRegistration');
+});
 
 Route::get('/t',function(){
     $date = new DateTime("now", new DateTimeZone('Asia/Riyadh') );

@@ -30,13 +30,13 @@
                                                 <img src="https://i.imgur.com/HimtftSr.png" alt="Avatar" style="width:100%">
                                                 <div class="container12">
                                                     <br>
-                                                    <h4 class="card-title"><b>{{$card->cardholdername}}</b></h4> 
-                                                    <p>{{$card->creditcardnumber}}</p>
-                                                    <p>{{$card->expirydate}}</p> 
+                                                    <h4 class="card-title"><b>Card Holder's Name: {{$card->cardholdername}}</b></h4> 
+                                                    <p>Credit Card Number: {{$card->creditcardnumber}}</p>
+                                                    <p>Expiry Date: {{$card->expirydate}}</p> 
                                                     <form method="POST" action="{{ route('cards.destroy', [$card->id]) }}">
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-danger btn-lg btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
+                                                        <button type="submit" class="btn btn-danger  btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
                                                     </form>
                                                     <br>
 
@@ -46,23 +46,23 @@
                                         </div>
                                     @endforeach
                                 @else 
-                                    <h4 class="card-title"><b>No Credit Cards Available</b></h4>
-                                @endif
-
                                 <div class="col-sm-12 col-lg-4">
-                                    <div class="card12">
-                                        <img src="https://i.imgur.com/TAD3ciz.png" alt="Avatar" style="width:100%">
-                                        <div class="container12">
-                                            <br>
-                                            <h4 class="card-title"><b>Add New card</b></h4> 
-                                            <br>
-                                            <form method="GET" action="/addCard">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase" style="border-radius: 25px;">Add New Card</button>
-                                            </form>
-                                            <br>                                    
+                                        <div class="card12">
+                                            <img src="https://i.imgur.com/TAD3ciz.png" alt="Avatar" style="width:100%">
+                                            <div class="container12">
+                                                <br>
+                                                <h4 class="card-title"><b>Add New card</b></h4> 
+                                                <br>
+                                                <form method="GET" action="/addCard">
+                                                    <button type="submit" class="btn btn-success  btn-block text-uppercase" style="border-radius: 25px;">Add New Card</button>
+                                                </form>
+                                                <br>                                    
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
+
+
 
                             </div>
                         @else 

@@ -32,8 +32,10 @@
 											<p>Price: {{$insuranceOffer->price}}SAR</p> 
 											<br>
 											<form method="GET" action="#e">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase" style="border-radius: 25px;">Add Insurance</button>
+                                                <button type="submit" class="btn btn-success  btn-block text-uppercase" style="border-radius: 25px;">Add Insurance</button>
                                             </form>
+                                            <br>
+                                            
 										</div>
 									</div>
 									<br>

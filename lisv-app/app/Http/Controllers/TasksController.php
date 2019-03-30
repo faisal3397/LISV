@@ -59,7 +59,7 @@ class TasksController extends Controller
         $task = new Task;
         
         $task->taskname = request('taskname');
-
+        $task->date = request('date');
         $task->time = request('time');
         $task ->user_id = auth()->id();
 
@@ -74,7 +74,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
 
         $task->taskname = request('taskname');
-
+        $task->date = request('date');
         $task->time = request('time');
 
         $task ->user_id = auth()->id();
