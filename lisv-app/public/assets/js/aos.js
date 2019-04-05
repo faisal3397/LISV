@@ -50,10 +50,10 @@ function map(position) {
 
     const shops =
     {
-        name: "مجمع الفوزان الطبي",
+        name: "النخيل مول",
         discount: true,
-        lat: 24.778363,
-        lng: 46.775690,
+        lat: 24.763783,
+        long: 46.703859
     }
 
     window.setInterval(function(){
