@@ -9,7 +9,7 @@ background: #3d3d3d;
 
 .card-signin {
 border: 0;
-border-radius: 1rem;
+border-radius: 5px;
 box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -21,6 +21,7 @@ font-size: 1.5rem;
 
 .card-signin .card-body {
 padding: 2rem;
+border-radius: 0%;
 }
 
 .form-signin {
@@ -116,8 +117,7 @@ h2 {
     transition: 0.3s;
     margin-left: 5%;
     margin-right: 5%;
-    border-radius: 25px;
-
+    border-radius: 10px;
 }
 
 .card12:hover {
@@ -129,6 +129,7 @@ h2 {
 }
 
 
+
 .links > a {
     color: #636b6f;
     padding: 0 25px;
@@ -138,3 +139,4 @@ h2 {
     text-decoration: none;
     text-transform: uppercase;
 }
+

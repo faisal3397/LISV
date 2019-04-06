@@ -65,6 +65,7 @@ Route::get('/carRegistration', 'CarRegistrationController@show');
 Route::post('/carRegistration', 'CarRegistrationController@store');
 Route::delete('/carRegistration/{id}', 'CarRegistrationController@destroy')->name('registration.destroy');
 Route::put('/carRegistration/{id}', 'CarRegistrationController@update')->name('registration.update');
+Route::get('/updateRegistration','CarRegistrationController@updateForm');
 
 Route::get('/company', 'CompanyController@show');
 Route::post('/company', 'CompanyController@store');

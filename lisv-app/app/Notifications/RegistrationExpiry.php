@@ -42,7 +42,7 @@ class RegistrationExpiry extends Notification
     {
         return (new MailMessage)
                     ->line('Looks Like your Registration is About to expire, You can update it.')
-                    ->action('Update', url('http://127.0.0.1:8000/carRegistration'))
+                    ->action('Update', url('http://127.0.0.1:8000/updateRegistration'))
                     ->line('Thank you for using our application!');
     }
 

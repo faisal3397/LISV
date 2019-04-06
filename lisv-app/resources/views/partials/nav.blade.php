@@ -12,7 +12,7 @@
             <a class="nav-link" href="http://127.0.0.1:8000/tasks">Tasks</a>
         </li>
         <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/awareofShops">Aware Of Shops</a>
+                <a class="nav-link" href="http://127.0.0.1:8000/awareofShops">Aware</a>
         </li>
         <li class="nav-item">
                 <a class="nav-link" href="http://127.0.0.1:8000/outofRadius">Out Of Radius</a>

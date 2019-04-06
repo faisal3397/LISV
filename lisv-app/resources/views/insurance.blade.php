@@ -38,7 +38,7 @@
                                                     <form method="POST" action="{{ route('insurance.destroy', [$insurance->id]) }}">
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-danger btn-lg btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
+                                                        <button type="submit" class="btn btn-danger btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
                                                     </form>
                                                     <br>
 
@@ -56,7 +56,7 @@
                                                 <h4 class="card-title"><b>Add New Insurance</b></h4> 
                                                 <br>
                                                 <form method="GET" action="/addInsurance">
-                                                    <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase" style="border-radius: 25px;">Add New Insurance</button>
+                                                    <button type="submit" class="btn btn-success btn-block text-uppercase" style="border-radius: 25px;">Add New Insurance</button>
                                                 </form>
                                                 <br>                                    
                                             </div>

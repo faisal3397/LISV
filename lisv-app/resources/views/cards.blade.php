@@ -23,7 +23,7 @@
                             <h1 class="text-center">Your Cards</h1>
                             <br>
                             <div class="row">
-                                @if(count($cards) > 0)
+                               
                                     @foreach($cards as $card)
                                         <div class="col-sm-12 col-lg-4">
                                             <div class="card12">
@@ -36,7 +36,7 @@
                                                     <form method="POST" action="{{ route('cards.destroy', [$card->id]) }}">
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-danger  btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
+                                                        <button type="submit" class="btn btn-danger btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
                                                     </form>
                                                     <br>
 
@@ -45,11 +45,10 @@
                                             <br>
                                         </div>
                                     @endforeach
-                                @else 
-                                <div class="col-sm-12 col-lg-4">
-                                        <div class="card12">
+                                    <div class="col-sm-12 col-lg-4">
+                                        <div class="card12 card-height container-middle1">
                                             <img src="https://i.imgur.com/TAD3ciz.png" alt="Avatar" style="width:100%">
-                                            <div class="container12">
+                                            <div class="container12 ">
                                                 <br>
                                                 <h4 class="card-title"><b>Add New card</b></h4> 
                                                 <br>
@@ -60,7 +59,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+                                
 
 
 

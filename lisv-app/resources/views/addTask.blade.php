@@ -21,12 +21,6 @@
                         <h5 class="card-title text-center">Add Task</h5>
                         <form class="form-signin" method="POST" action="/tasks">
                             {{ csrf_field() }}
-                            {{-- <div class="btn-group btn-block" role="group">
-                                <button type="button" class="btn btn-secondary" name="taskname">Open Doors</button>
-                                <button type="button" class="btn btn-secondary" name="t">Close Doors</button>
-                                <button type="button" class="btn btn-secondary">Turn car On</button>
-                                <button type="button" class="btn btn-secondary">Turn car Off</button>
-                            </div> --}}
                             <div class="input-group mb-3">
                                     <select class="custom-select" id="inputGroupSelect01" style="border-radius: 25px; height: 53px;" name="taskname">
                                         <option selected>Task</option>
@@ -36,8 +30,13 @@
                                         <option value="Turn off">Turn off</option>
                                     </select>
                             </div>
-                            
+
                             <div class="form-label-group">
+                                    <input type="datetime-local" id="date" class="form-control" placeholder="Date" name="date" required >
+                                    <label for="date">Date</label>
+                                </div>
+                            
+                            {{-- <div class="form-label-group">
                                 <input type="date" id="date" class="form-control" placeholder="Date" name="date" required >
                                 <label for="date">Date</label>
                             </div>
@@ -45,7 +44,7 @@
                             <div class="form-label-group">
                                 <input type="time" id="time" class="form-control" placeholder="Time" name="time" required >
                                 <label for="time">Time</label>
-                            </div>    
+                            </div>     --}}
                              
                             <button class="btn btn-lg btn-secondary btn-block text-uppercase" type="submit">Add Task</button>
                         </form>

@@ -77,7 +77,7 @@
                 <div class="links">            
                     <a  href="#"> Hello {{ Auth::user()->name }}</a>
                     <a  href="http://127.0.0.1:8000/tasks">Tasks</a>
-                    <a  href="http://127.0.0.1:8000/awareofShops">Aware Of Shops</a>
+                    <a  href="http://127.0.0.1:8000/awareofShops">Aware</a>
                     <a  href="http://127.0.0.1:8000/outofRadius">Out Of Radius</a>
                     <a  href="http://127.0.0.1:8000/weather">Weather</a>
                     <a  href="http://127.0.0.1:8000/cards">Cards</a>

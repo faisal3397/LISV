@@ -13,8 +13,8 @@
 <body>
 
     @include('partials.nav')
-
     <div class="container">
+
         <div class="row">
             <div class="col-sm-9 col-lg-12 mx-auto">
                 <div class="card card-signin my-5" >
@@ -29,15 +29,15 @@
                                     <div class="card12">
                                         <div class="container12">
                                             <br>
-                                        <h4 class="card-title"><b>Task: {{$task->taskname}}</b></h4> 
-                                        <p>Date: {{$task->date}}</p> 
-                                        <p>Time: {{$task->time}}</p> 
-                                                <br>
-                                                <form method="POST" action="{{ route('tasks.destroy', [$task->id]) }}">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                    <button type="submit" class="btn btn-danger btn-lg btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
-                                                </form>
+                                            <h4 class="card-title"><b>Task: {{$task->taskname}}</b></h4> 
+                                            <p>Date: {{$task->date}}</p> 
+                                            {{-- <p>Time: {{$task->time}}</p>  --}}
+                                            <br>
+                                            <form method="POST" action="{{ route('tasks.destroy', [$task->id]) }}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
+                                            </form>
                                             <br>
                                             <br>
                                         </div>
@@ -48,8 +48,8 @@
                             @endif
 
                             <div class="col-sm-12 col-lg-4">
-                                <div class="card12">
-                                    <div class="container12">
+                                <div class="card12 card-height1">
+                                    <div class="container12 container-middle">
                                         <br>
                                         <h4 class="card-title text-center"><b>New Task</b></h4> 
                                         <form method="GET" action="/addTask">

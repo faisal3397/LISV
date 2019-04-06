@@ -20,6 +20,7 @@
                 <div class="card card-signin my-5" >
                     <div class="card-body">
                         @if(Auth::check())
+                            
                             <h1 class="text-center">Insurance Offer</h1>
                             <br>
                             <div class="row">
@@ -31,7 +32,7 @@
 											<p>Insurance Expiry Date: {{$insuranceOffer->expirydate}}</p> 
 											<p>Price: {{$insuranceOffer->price}}SAR</p> 
 											<br>
-											<form method="GET" action="#e">
+											<form method="GET" action="#">
                                                 <button type="submit" class="btn btn-success  btn-block text-uppercase" style="border-radius: 25px;">Add Insurance</button>
                                             </form>
                                             <br>

@@ -13,10 +13,12 @@ class TasksController extends Controller
 
     public function show(){
         $date = Carbon::now('Asia/Riyadh');
+        $currentDate = $date->format('Y m d H:i');
         $tasks = DB::table('tasks')->where('user_id', '=', auth()->id())->get();
         foreach ($tasks as $task) {
-            if($date->format('H:i') > ($task->time)){
-                
+            $taskTime = (new Carbon($task->date))->format('Y m d H:i');
+            if($currentDate >= $taskTime){
+                var_dump("true");
                 switch($task->taskname){
                     case 'Open Doors':
                     $this->destroy($task->id);
@@ -60,7 +62,7 @@ class TasksController extends Controller
         
         $task->taskname = request('taskname');
         $task->date = request('date');
-        $task->time = request('time');
+        // $task->time = request('time');
         $task ->user_id = auth()->id();
 
 
@@ -75,7 +77,7 @@ class TasksController extends Controller
 
         $task->taskname = request('taskname');
         $task->date = request('date');
-        $task->time = request('time');
+        // $task->time = request('time');
 
         $task ->user_id = auth()->id();
 
