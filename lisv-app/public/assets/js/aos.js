@@ -1,5 +1,3 @@
-console.log("It Works");
-
 //check if the browser have the geolocation
 function getLocation() {
     if (navigator.geolocation) {
@@ -22,7 +20,6 @@ function map(position) {
         //anchor: new google.maps.Point(0, 0) // anchor
     }
 
-    var markers = [];
     window.setInterval(function(){
         var carMarker = new google.maps.Marker({
             position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
@@ -38,52 +35,54 @@ function map(position) {
         google.maps.event.addListener(carMarker, 'click', function(){
             infoWindow.open(map, carMarker)
         })
-        markers.push(carMarker);
-    }, 1000);
-
-    window.setInterval(function(){
-        for (var i = 0; i < markers.length-1; i++) {
-            markers[i].setMap(null);
-            }
     }, 1000);
 
 
-    const shops =
+    const shops =[
     {
-        name: "النخيل مول",
-        discount: true,
-        lat: 24.763783,
-        long: 46.703859
+        name: "صيانة",
+        lat: 24.729635,
+        lng: 46.620593
+    },
+    {
+        name: "صيانة",
+        lat: 24.576866,
+        lng: 46.624984
+    },
+    {
+        name: "صيانة",
+        lat: 24.765577,
+        lng: 46.706748
     }
+    ]
 
     window.setInterval(function(){
-        if(shops.discount == true ){
+        shops.forEach(shops => {
             if(position.coords.latitude  + 0.02 > shops.lat && position.coords.latitude  - 0.02 < shops.lat
-            && position.coords.longitude + 0.02 > shops.lng && position.coords.longitude - 0.02 < shops.lng){
-
-                var shopicon = {
-                    url: "https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/store.png", // url
-                    scaledSize: new google.maps.Size(30, 30), // scaled size
-                    origin: new google.maps.Point(0,0), // origin
-                    anchor: new google.maps.Point(0, 0) // anchor
-                }
-
-                var shopMarker = new google.maps.Marker({
-                    position: new google.maps.LatLng(shops.lat, shops.lng),
-                    map: map,
-                    title: shops.name,
-                    icon: shopicon,
-                })
-            
-                var info = new google.maps.InfoWindow({
-                    content: `<p id = 'left'>${shops.name} have a discount</p>`
-                })
+                && position.coords.longitude + 0.02 > shops.lng && position.coords.longitude - 0.02 < shops.lng){
+        
+                    var shopicon = {
+                        url: "https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/304/original/tools.png", // url
+                        scaledSize: new google.maps.Size(30, 30), // scaled size
+                        origin: new google.maps.Point(0,0), // origin
+                        anchor: new google.maps.Point(0, 0) // anchor
+                    }
+        
+                    var shopMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(shops.lat, shops.lng),
+                        map: map,
+                        title: shops.name,
+                        icon: shopicon,
+                    })
                 
-                google.maps.event.addListener(shopMarker, 'click', function(){
-                    info.open(map, shopMarker)
-                })
-                markers.push(shopMarker);
-            }
-        }
+                    var info = new google.maps.InfoWindow({
+                        content: `<p id = 'left'>${shops.name} have a discount</p>`
+                    })
+                    
+                    google.maps.event.addListener(shopMarker, 'click', function(){
+                        info.open(map, shopMarker)
+                    })
+                }
+        });
     }, 1000);
 }
