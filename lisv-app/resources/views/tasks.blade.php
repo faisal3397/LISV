@@ -1,197 +1,97 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
-	<title>Tasks</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style0.css">
+    <title>Tasks</title>
 
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				@if(Auth::check())
-					@if(count($errors)>0)
-						<div class= "alert alert-danger">
-							You did not chooes a task.
-						</div>
-					@endif
 
+    @include('partials.nav')
+    {{-- @if($status != null)
+        <div class= "alert alert-success">
+            {{$status}}
+        </div>
+    @endif --}}
+    <div class="container">
 
-				@if(session('success'))
-					<div class= "alert alert-success">
-						{{session('success')}}
-					</div>
-				@endif
-				
-				@if($status != null)
-				<div class= "alert alert-success">
-					{{$status}}
-				</div>
-				@endif
+        <div class="row">
+            <div class="col-sm-9 col-lg-12 mx-auto">
+                <div class="card card-signin my-5" >
+                    <div class="card-body">
+                        @if(Auth::check())
+                        <h1 class="text-center">Add Tasks</h1>
+                        <br>
+                        <div class="row">
+                                <div class="col-sm-12 col-lg-4">
+                                        <div class="card12 card-height1">
+                                            <div class="container12 container-middle">
+                                                <br>
+                                                <h4 class="card-title text-center"><b>Car Status</b></h4> 
+                                                    @if($carStatus != null)
+                                                        <p>{{$carStatus->doors}}</p>
+                                                        <br>
+                                                        <p>{{$carStatus->vehicle}}</p>
+                                                        <br>      
+                                                    @endif    
+                                            </div>
+                                        </div>
+                                </div>
 
-				@if(count($tasks)>0)
-				@foreach($tasks as $task)
-					<div>
-						Task: {{$task->taskname}}
-						<br>
-						Time: {{$task->time}}
-						<br>
-						<form method="POST" action="{{ route('tasks.destroy', [$task->id]) }}">
-								{{ csrf_field() }}
-								{{ method_field('DELETE') }}
-								<button type="submit">Delete</button>
-								@include('partials.errors')
-						</form>
+                            @if(count($tasks)>0)
+                            @foreach($tasks as $task)
+                                <div class="col-sm-12 col-lg-4">
+                                    <div class="card12">
+                                        <div class="container12">
+                                            <br>
+                                            <h4 class="card-title"><b>Task: {{$task->taskname}}</b></h4> 
+                                            <p>Date: {{$task->date}}</p> 
+                                            {{-- <p>Time: {{$task->time}}</p>  --}}
+                                            <br>
+                                            <form method="POST" action="{{ route('tasks.destroy', [$task->id]) }}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
+                                            </form>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            @endforeach
+                            @endif
 
-						<form method="POST" action="{{ route('tasks.update', [$task->id]) }}">
-								{{ csrf_field() }}
-								{{ method_field('PUT') }}
-								<div class="btn-group btn-group-toggle" data-toggle="buttons">
-										<label class="btn btn-secondary active">
-										  <input type="radio" name="taskname" id="option1" autocomplete="off" value="Open Doors"> Open Doors
-										</label>
-										<label class="btn btn-secondary">
-											 <input type="radio" name="taskname" id="option2" autocomplete="off" value="Close Doors"> Close Doors
-										</label>
-										<label class="btn btn-secondary">
-											  <input type="radio" name="taskname" id="option3" autocomplete="off" value="Turn on"> Turn on
-										</label>
-									  <label class="btn btn-secondary">
-											  <input type="radio" name="taskname" id="option3" autocomplete="off" value="Turn off"> Turn off
-										</label>
-								  </div>
-								  <br>
-								  					
-								<div class="wrap-input100 ">
-										<input class="input100" type="time" name="time" placeholder="Time" id="time">
-										<span class="focus-input100-1"></span>
-										<span class="focus-input100-2"></span>
-									</div>
-	
-								<button type="submit">Edit</button>
-								@include('partials.errors')
-						</form>
-					</div>
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="card12 card-height1">
+                                    <div class="container12 container-middle">
+                                        <br>
+                                        <h4 class="card-title text-center"><b>New Task</b></h4> 
+                                        <form method="GET" action="/addTask">
+                                            <button type="submit" class="btn btn-success btn-block text-uppercase" style="border-radius: 25px;">Add New Task</button>
+                                        </form>
+                                        <br>    
+                                    </div>
+                                </div>
+                            </div>
 
-					<br>
-				@endforeach
-			@endif
-
-			
-				<form class="login100-form validate-form" method="POST" action="/tasks">
-
-					{{ csrf_field() }}
-
-					<span class="login100-form-title p-b-33">
-						Tasks		
-					</span>
-
-
-
-
-					Task:
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  						<label class="btn btn-secondary active">
-    						<input type="radio" name="taskname" id="option1" autocomplete="off" value="Open Doors"> Open Doors
-  						</label>
-  						<label class="btn btn-secondary">
-   							<input type="radio" name="taskname" id="option2" autocomplete="off" value="Close Doors"> Close Doors
-  						</label>
-  						<label class="btn btn-secondary">
-   	 						<input type="radio" name="taskname" id="option3" autocomplete="off" value="Turn on"> Turn on
-  						</label>
-						<label class="btn btn-secondary">
-   	 						<input type="radio" name="taskname" id="option3" autocomplete="off" value="Turn off"> Turn off
-  						</label>
-					</div>
-					<br>
-					
-					Time:
-					
-					
-					<div class="wrap-input100 validate-input" data-validate = "Valid Time is required">
-						<input class="input100" type="time" name="time" placeholder="Time" id="time">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-
-					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn">
-							Enter Task
-						</button>
-					</div>
-					<br>
-				</form>
-				@else 
-					<div class="content">
-
-                
-						<div class="links">
-								<a href="http://127.0.0.1:8000/signup">Sign up</a>
-								<a href="http://127.0.0.1:8000/signin">Login</a>
-						</div>
-				
-					</div>
-				@endif
-			</div>
-		</div>
-	</div>
-	
-
-	
-
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-
-	<script src="vendor/bootstrap/js/popper.js"></script>
-
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-	<script src="vendor/select2/select2.min.js"></script>
-
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-
-	<script src="js/main.js"></script>
-
-	
-	<!-- bootstrap -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+                        </div>
+                        @else 
+                        <div class="links">
+                                <a href="http://127.0.0.1:8000/signup">Sign up</a>
+                                <a href="http://127.0.0.1:8000/signin">Login</a>
+                        </div>
+                        @endif
+                        @include('partials.errors')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-</html> 
+</html>

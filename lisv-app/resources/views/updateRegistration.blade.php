@@ -12,11 +12,7 @@
 <body>
 
     @include('partials.nav')
-    @if(session('success'))
-        <div class= "alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
+
     <div class="container">
        
         <div class="row">
@@ -42,10 +38,11 @@
                                                     <p>Car Color: {{$registration->color}}</p>
                                                     <p>Registration Type: {{$registration->registrationtype}}</p>    
                                                     <p>Plate Number: {{$registration->platenumber}}</p>
-                                                    <form method="POST" action="{{ route('registration.destroy', [$registration->id]) }}">
+                                                    <p>Registration will cost you 100 SAR, do you want to update registration?</p>
+                                                    <form method="POST" action="{{ route('registration.update', [$registration->id]) }}">
                                                             {{ csrf_field() }}
-                                                            {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-danger btn-block text-uppercase" style="border-radius: 25px;">Delete</button>
+                                                            {{ method_field('PUT') }}
+                                                        <button type="submit" class="btn btn-danger btn-block text-uppercase" style="border-radius: 25px;">Yes</button>
                                                     </form>
                                                     <br>
 
@@ -54,21 +51,6 @@
                                             <br>
                                         </div>
                                     @endforeach
-                                @else 
-                                    <div class="col-sm-12 col-lg-4 mx-auto">
-                                        <div class="card12">
-                                            <img src="https://i.imgur.com/TAD3ciz.png" alt="Avatar" style="width:100%">
-                                            <div class="container12">
-                                                <br>
-                                                <h4 class="card-title"><b>Add New Registration</b></h4> 
-                                                <br>
-                                                <form method="GET" action="/addRegistration">
-                                                    <button type="submit" class="btn btn-success btn-block text-uppercase" style="border-radius: 25px;">Add New Registration</button>
-                                                </form>
-                                                <br>                                    
-                                            </div>
-                                        </div>
-                                    </div>
                                 @endif
 
 

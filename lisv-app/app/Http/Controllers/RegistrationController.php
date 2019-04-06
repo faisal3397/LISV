@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Car;
 
 class RegistrationController extends Controller
 {
@@ -50,13 +51,23 @@ class RegistrationController extends Controller
 
         $user->save();
 
+
         // Sign them in
 
         auth()->login($user);
 
-        // Redirect to homepage
+        //Register the user's car 
+        $car = new Car;
 
-        return redirect('http://127.0.0.1:8000/');
+        $car->user_id = auth()->id();
+        $car->doors = 'Doors are Closed';
+        $car->vehicle = 'Vehicle is Off';
+
+        $car->save();
+
+        // Redirect to Car Registration
+
+        return redirect('http://127.0.0.1:8000/addRegistration');
     }
 
     

@@ -41,8 +41,8 @@ class InsuranceOffer extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Looks Like your Insurance is About to expire, here is a new Insurance Offer.')
-                    ->action('Check It Out', url('http://127.0.0.1:8000/insuranceOffer'))
+                    ->line('Looks Like your Insurance is About to expire, here is a some Insurance Offers.')
+                    ->action('Check It Out', url('http://127.0.0.1:8000/updateInsurance'))
                     ->line('Thank you for using our application!');
     }
 
