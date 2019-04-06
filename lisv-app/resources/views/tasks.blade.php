@@ -13,6 +13,11 @@
 <body>
 
     @include('partials.nav')
+    {{-- @if($status != null)
+        <div class= "alert alert-success">
+            {{$status}}
+        </div>
+    @endif --}}
     <div class="container">
 
         <div class="row">
@@ -23,6 +28,21 @@
                         <h1 class="text-center">Add Tasks</h1>
                         <br>
                         <div class="row">
+                                <div class="col-sm-12 col-lg-4">
+                                        <div class="card12 card-height1">
+                                            <div class="container12 container-middle">
+                                                <br>
+                                                <h4 class="card-title text-center"><b>Car Status</b></h4> 
+                                                    @if($carStatus != null)
+                                                        <p>{{$carStatus->doors}}</p>
+                                                        <br>
+                                                        <p>{{$carStatus->vehicle}}</p>
+                                                        <br>      
+                                                    @endif    
+                                            </div>
+                                        </div>
+                                </div>
+
                             @if(count($tasks)>0)
                             @foreach($tasks as $task)
                                 <div class="col-sm-12 col-lg-4">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Task;
 use App\User;
-
+use App\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -15,29 +15,35 @@ class TasksController extends Controller
         $date = Carbon::now('Asia/Riyadh');
         $currentDate = $date->format('Y m d H:i');
         $tasks = DB::table('tasks')->where('user_id', '=', auth()->id())->get();
+        $carID = DB::table('cars')->where('user_id', '=', auth()->id())->first()->id;
+        $car = Car::findOrFail($carID);
         foreach ($tasks as $task) {
             $taskTime = (new Carbon($task->date))->format('Y m d H:i');
             if($currentDate >= $taskTime){
-                var_dump("true");
+                var_dump($task->taskname);
                 switch($task->taskname){
                     case 'Open Doors':
                     $this->destroy($task->id);
-                    return view('tasks')->with("tasks", $tasks)->with("status","Doors are Open");
+                    $car->doors = 'Doors are Open';
+                    $car->save();
                     break;
 
                     case 'Close Doors':
                     $this->destroy($task->id);
-                    return view('tasks')->with("tasks", $tasks)->with("status","Doors are Closed");
+                    $car->doors = 'Doors are Closed';
+                    $car->save();
                     break;
 
                     case 'Turn on':
                     $this->destroy($task->id);
-                    return view('tasks')->with("tasks", $tasks)->with("status","Car is On");
+                    $car->vehicle = 'Car is On';
+                    $car->save();
                     break;
 
                     case 'Turn off':
                     $this->destroy($task->id);
-                    return view('tasks')->with("tasks", $tasks)->with("status","Car is Off");
+                    $car->vehicle = 'Car is Off';
+                    $car->save();
                     break;
                 }
                 
@@ -45,7 +51,7 @@ class TasksController extends Controller
 
                      
         }
-        return view('tasks')->with("tasks", $tasks)->with("status");
+        return view('tasks')->with("tasks", $tasks)->with("carStatus", $car);
     } 
 
 

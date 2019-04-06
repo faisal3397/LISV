@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Insurance');
     }
+
+    public function car()
+    {
+        return $this->hasOne('App\Car');
+    }
 }

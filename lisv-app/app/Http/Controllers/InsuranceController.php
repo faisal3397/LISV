@@ -118,7 +118,7 @@ class InsuranceController extends Controller
 
         $insurance->save();
 
-        return redirect('http://127.0.0.1:8000/insurance')->with("success", "Insurance Added");
+        return redirect('http://127.0.0.1:8000/insurance')->with("success", "Insurance Added, the amount of money paid is {$offerID->price} SAR");
     }
 
 
