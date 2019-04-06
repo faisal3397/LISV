@@ -58,8 +58,10 @@ Route::get('/addInsurance', function(){
 });
 Route::post('/insurance', 'InsuranceController@store');
 Route::delete('/insurance/{id}', 'InsuranceController@destroy')->name('insurance.destroy');
-Route::put('/insurance/{id}', 'InsuranceController@update')->name('insurance.update');
+Route::put('/insurance/{id}/{id1}', 'InsuranceController@update')->name('insurance.update');
 Route::get('/insuranceOffer', 'InsuranceController@showOffer');
+Route::post('/insuranceOffer/{id}', 'InsuranceController@storeOffer')->name('insurance.storeOffer');
+Route::get('/updateInsurance', 'InsuranceController@updateForm');
 
 Route::get('/carRegistration', 'CarRegistrationController@show');
 Route::post('/carRegistration', 'CarRegistrationController@store');

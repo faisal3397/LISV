@@ -34,9 +34,10 @@
                                                     <p>Insurance Expiry Date: {{$insuranceOffer->expirydate}}</p> 
                                                     <p>Price: {{$insuranceOffer->price}}SAR</p> 
                                                     <br>
-                                                    <form method="POST" action="{{ route('insurance.storeOffer', [$insuranceOffer->id])}}">
+                                                    <form method="POST" action="{{ route('insurance.update', [$insuranceOffer->id, $insurance->id])}}">
                                                             {{ csrf_field() }}
-                                                        <button type="submit" class="btn btn-success  btn-block text-uppercase" style="border-radius: 25px;">Add Insurance</button>
+                                                            {{ method_field('PUT') }}
+                                                        <button type="submit" class="btn btn-success  btn-block text-uppercase" style="border-radius: 25px;">Update Insurance</button>
                                                     </form>
                                                     <br>
                                                     

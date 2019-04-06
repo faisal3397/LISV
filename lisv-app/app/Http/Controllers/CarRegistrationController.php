@@ -111,7 +111,7 @@ class CarRegistrationController extends Controller
 
         $registration->save();
 
-        return redirect('http://127.0.0.1:8000/carRegistration')->with("success", "registration Updated, the amount paid is 100 SAR");
+        return redirect('http://127.0.0.1:8000/carRegistration')->with("success", "registration Updated, the amount of money paid is 100 SAR");
     }
 
     public function destroy($id)
