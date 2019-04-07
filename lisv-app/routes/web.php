@@ -76,7 +76,7 @@ Route::get('/weather', function(){
     return view('weather');
 });
 
-Route::get('/awareofShops', function(){
+Route::get('/aware', function(){
     return view('awareofShops');
 });
 
