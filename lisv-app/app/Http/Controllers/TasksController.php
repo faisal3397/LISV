@@ -20,7 +20,6 @@ class TasksController extends Controller
         foreach ($tasks as $task) {
             $taskTime = (new Carbon($task->date))->format('Y m d H:i');
             if($currentDate >= $taskTime){
-                var_dump($task->taskname);
                 switch($task->taskname){
                     case 'Open Doors':
                     $this->destroy($task->id);
